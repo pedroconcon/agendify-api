@@ -20,6 +20,12 @@ public class CargoController {
         return ResponseEntity.ok(cargoRepository.findAll());
     }
 
+    @GetMapping("/find-by-id")
+    public ResponseEntity findByIdCarago(@RequestParam Long idCargo){
+
+       return ResponseEntity.ok(cargoRepository.findById(idCargo));
+    }
+
     @PutMapping("/update")
     public ResponseEntity updateCargo(@RequestBody Cargo request){
 
