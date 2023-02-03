@@ -16,10 +16,9 @@ import java.time.LocalDateTime;
 public class Agendamentos{
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name="id_agendamento")
     private Long idAgendamento;
-
     @Column(name="id_user")
     @NotNull
     private Long idUser;
