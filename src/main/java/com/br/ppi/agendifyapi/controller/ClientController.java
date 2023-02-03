@@ -29,6 +29,12 @@ public class ClientController {
 
         return ResponseEntity.ok(clientRepository.findAll());
     }
+
+    @GetMapping("/find-by-id")
+    public ResponseEntity findByIdClient(@RequestParam Long idUser){
+
+        return ResponseEntity.ok(clientRepository.findById(idUser));
+    }
     @PutMapping("/update")
     public ResponseEntity updateClient(@RequestBody Client request){
 

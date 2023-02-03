@@ -21,7 +21,7 @@ public class CargoController {
     }
 
     @GetMapping("/find-by-id")
-    public ResponseEntity findByIdCarago(@RequestParam Long idCargo){
+    public ResponseEntity findByIdCargo(@RequestParam Long idCargo){
 
        return ResponseEntity.ok(cargoRepository.findById(idCargo));
     }

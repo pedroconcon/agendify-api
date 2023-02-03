@@ -20,6 +20,12 @@ public class ProfissionalController {
 
         return ResponseEntity.ok(profissionalRepository.findAll());
     }
+
+    @GetMapping("/find-by-id")
+    public ResponseEntity findByIdProfissional(@RequestParam Long idProfissional){
+
+        return ResponseEntity.ok(profissionalRepository.findById(idProfissional));
+    }
     @PutMapping("/update")
     public ResponseEntity updateProfissional(@RequestBody Profissional request){
 
