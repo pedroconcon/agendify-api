@@ -33,5 +33,5 @@ public class Agendamentos{
 
     @Column(name="data")
     @NotNull
-    private LocalDateTime dsTitulo;
+    private LocalDateTime data;
 }
