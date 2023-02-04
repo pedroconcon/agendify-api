@@ -1,7 +1,6 @@
 package com.br.ppi.agendifyapi.controller;
 
 import com.br.ppi.agendifyapi.model.Profissional;
-import com.br.ppi.agendifyapi.repository.CargoRepository;
 import com.br.ppi.agendifyapi.repository.ProfissionalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,9 +14,6 @@ public class ProfissionalController {
 
     @Autowired
     private ProfissionalRepository profissionalRepository;
-
-    @Autowired
-    private CargoRepository cargoRepository;
 
     @GetMapping("/find-all")
     public ResponseEntity findAllProfissional(){
@@ -39,6 +35,25 @@ public class ProfissionalController {
 
         return ResponseEntity.ok(profissionalRepository.save(proToUpdate.get()));
     }
+   /* @PostMapping("/save")
+    public ResponseEntity saveProfissional(@RequestBody ProfissionalRequestDTO profissionalRequestDTO){
+
+        Profissional request = Profissional.builder().idProfissional(profissionalRequestDTO.getIdProfissional())
+                              .cargo(profissionalRequestDTO.getCargo())
+                              .nome(profissionalRequestDTO.getNome())
+                              .build();
+        Profissional teste = profissionalRepository.save(request);
+
+        profissionalRequestDTO.getListServicos().forEach(a ->
+                    profissionalHasServicosRepository.save(ProfissionalHasServicos.builder()
+                            .idProfissionalServicos(null)
+                            .idProfissional(teste.getIdProfissional())
+                            .idSevicos(a)
+                            .build()));
+
+        return ResponseEntity.ok(teste);
+    }*/
+
     @PostMapping("/save")
     public ResponseEntity saveProfissional(@RequestBody Profissional profissional){
 

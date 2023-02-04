@@ -1,19 +1,19 @@
 package com.br.ppi.agendifyapi.model;
 
 import jdk.jfr.Relational;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Generated;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "profissional")
+@Builder
 public class Profissional {
 
     @Id
@@ -25,4 +25,9 @@ public class Profissional {
     private Cargo cargo;
     @Column(name = "nome")
     private String nome;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable( name = "profissional_has_servicos",
+                joinColumns = { @JoinColumn(name = "id_profissional")},
+                inverseJoinColumns = {@JoinColumn(name="id_servicos")})
+    private List<Servicos> servicos;
 }
