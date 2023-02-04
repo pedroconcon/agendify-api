@@ -19,6 +19,12 @@ public class ServicosController {
 
         return ResponseEntity.ok(servicosRepository.findAll());
     }
+
+    @GetMapping("/find-by-id")
+    public ResponseEntity findByIdServicos(@RequestParam Long idServicos){
+
+        return ResponseEntity.ok(servicosRepository.findById(idServicos));
+    }
     @PutMapping("/update")
     public ResponseEntity updateCargo(@RequestBody Servicos servicos){
 
@@ -38,6 +44,6 @@ public class ServicosController {
     public ResponseEntity deleteServico(@RequestParam Long idServico){
 
         servicosRepository.deleteById(idServico);
-        return ResponseEntity.ok("Client deletado com sucesso");
+        return ResponseEntity.ok("Serviço deletado com sucesso");
     }
 }
