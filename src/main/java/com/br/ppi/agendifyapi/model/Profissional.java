@@ -20,9 +20,9 @@ public class Profissional {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name="id_profissional")
     private Long idProfissional;
-    @OneToMany
+    @OneToOne
     @JoinColumn(name = "id_cargo")
-    private List<Cargo> cargos;
+    private Cargo cargo;
     @Column(name = "nome")
     private String nome;
 }
