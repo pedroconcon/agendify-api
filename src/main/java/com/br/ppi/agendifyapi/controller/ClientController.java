@@ -50,7 +50,11 @@ public class ClientController {
     }
     @PostMapping("/save")
     public ResponseEntity saveClient(@RequestBody Client client){
-        //TODO tratar insert senha MD5
+
+        if(client.getIdUserType() == null){
+            client.setIdUserType(2L);
+        }
+
         return ResponseEntity.ok(clientRepository.save(client));
     }
     @DeleteMapping("/delete")
