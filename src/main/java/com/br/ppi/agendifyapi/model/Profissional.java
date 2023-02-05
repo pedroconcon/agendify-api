@@ -14,6 +14,8 @@ import java.util.Set;
 @NoArgsConstructor
 @Table(name = "profissional")
 @Builder
+@NamedEntityGraph(name = "servicos.detail", attributeNodes = @NamedAttributeNode("servicos"))
+@ToString(exclude = {"servicos"})
 public class Profissional {
 
     @Id
@@ -25,7 +27,7 @@ public class Profissional {
     private Cargo cargo;
     @Column(name = "nome")
     private String nome;
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER,cascade = {CascadeType.REFRESH,CascadeType.MERGE})
     @JoinTable( name = "profissional_has_servicos",
                 joinColumns = { @JoinColumn(name = "id_profissional")},
                 inverseJoinColumns = {@JoinColumn(name="id_servicos")})

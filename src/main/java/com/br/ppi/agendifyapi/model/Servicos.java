@@ -27,7 +27,8 @@ public class Servicos {
     private Double valor;
     @Column(name = "duracao")
     private Integer duracao;
-    @ManyToMany(mappedBy = "servicos",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+
+    @ManyToMany(mappedBy = "servicos", cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     @JsonIgnore
     private Set<Profissional> profissional = new HashSet<>();
 }
