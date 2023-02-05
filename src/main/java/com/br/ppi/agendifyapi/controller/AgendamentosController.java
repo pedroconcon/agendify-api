@@ -1,10 +1,13 @@
 package com.br.ppi.agendifyapi.controller;
 
 import com.br.ppi.agendifyapi.model.Agendamentos;
+import com.br.ppi.agendifyapi.model.Cargo;
 import com.br.ppi.agendifyapi.repository.AgendamentosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/agendamentos")
@@ -39,5 +42,15 @@ public class AgendamentosController {
         return ResponseEntity.ok("Agendamento deletado com sucesso");
     }
 
-    
+    @PutMapping("/update")
+    public ResponseEntity atualizaAgendamento(@RequestBody Agendamentos request){
+
+        Agendamentos agendamentoToUpdate = agendamentosRepository.findById(request.getIdAgendamento()).get();
+        agendamentoToUpdate.setData(request.getData());
+        agendamentoToUpdate.setClient(request.getClient());
+        agendamentoToUpdate.setValor(request.getValor());
+        agendamentoToUpdate.setProfissional(request.getProfissional());
+
+        return ResponseEntity.ok(agendamentosRepository.save(agendamentoToUpdate));
+    }
 }
