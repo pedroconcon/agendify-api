@@ -33,7 +33,7 @@ CREATE TABLE profissional(
                              id_cargo BIGINT NOT NULL,
                              nome VARCHAR(100) NOT NULL,
                              CONSTRAINT id_cargo_fk FOREIGN KEY (id_cargo) REFERENCES cargo(id_cargo)
-)
+);
 
 CREATE TABLE profissional_has_servicos(
                                           id_profissional BIGINT,

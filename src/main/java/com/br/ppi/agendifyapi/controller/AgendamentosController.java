@@ -50,6 +50,7 @@ public class AgendamentosController {
         agendamentoToUpdate.setClient(request.getClient());
         agendamentoToUpdate.setValor(request.getValor());
         agendamentoToUpdate.setProfissional(request.getProfissional());
+        agendamentoToUpdate.setServicos(request.getServicos());
 
         return ResponseEntity.ok(agendamentosRepository.save(agendamentoToUpdate));
     }
