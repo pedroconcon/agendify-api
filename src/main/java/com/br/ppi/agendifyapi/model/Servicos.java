@@ -31,4 +31,8 @@ public class Servicos {
     @ManyToMany(mappedBy = "servicos", cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     @JsonIgnore
     private Set<Profissional> profissional = new HashSet<>();
+
+    @ManyToMany(mappedBy = "servicos", cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
+    @JsonIgnore
+    private Set<Agendamentos> agendamentos = new HashSet<>();
 }

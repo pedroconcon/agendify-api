@@ -41,4 +41,9 @@ public class Agendamentos{
     @NotNull
     private LocalDateTime data;
 
+    @ManyToMany(fetch = FetchType.LAZY,cascade = {CascadeType.REFRESH,CascadeType.MERGE})
+    @JoinTable( name = "agendamento_has_servicos",
+            joinColumns = { @JoinColumn(name = "id_agendamento")},
+            inverseJoinColumns = {@JoinColumn(name="id_servicos")})
+    private List<Servicos> servicos;
 }
