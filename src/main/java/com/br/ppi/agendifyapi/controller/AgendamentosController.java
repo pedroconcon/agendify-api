@@ -22,10 +22,10 @@ public class AgendamentosController {
         return ResponseEntity.ok(agendamentosRepository.findAll());
     }
 
-    @GetMapping("/findAll-by-id")
-    public ResponseEntity findAllById(@RequestParam Long idUser){
+    @GetMapping("/find-by-id")
+    public ResponseEntity findAllById(@RequestParam Long idAgendamento){
 
-        return ResponseEntity.ok(agendamentosRepository.findAllByClientIdUser(idUser));
+        return ResponseEntity.ok(agendamentosRepository.findById(idAgendamento));
     }
 
     @PostMapping("/save")

@@ -10,5 +10,4 @@ import java.util.List;
 @Repository
 public interface AgendamentosRepository extends JpaRepository<Agendamentos, Long> {
 
-    public List<Agendamentos> findAllByClientIdUser(Long idUser);
 }
