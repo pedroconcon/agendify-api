@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -33,9 +34,9 @@ public class Client {
     @NotNull
     private String senha;
     @Column(name="data_nascimento")
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern="yyyy-MM-dd")
     @NotNull
-    private LocalDateTime dtNascimento;
+    private LocalDate dtNascimento;
     @Column(name="cpf")
     @NotNull
     private String cpf;

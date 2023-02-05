@@ -45,7 +45,6 @@ public class ClientController {
         clientToUpdate.get().setDtNascimento(request.getDtNascimento());
         clientToUpdate.get().setSenha(request.getSenha());//TODO criar funcao md5 para atualizar e salvar no banco
         clientToUpdate.get().setTelefone(request.getTelefone());
-        clientToUpdate.get().setIdUserType(request.getIdUserType());
 
         return ResponseEntity.ok(clientRepository.save(clientToUpdate.get()));
     }
@@ -58,6 +57,6 @@ public class ClientController {
     public ResponseEntity deleteClient(@RequestParam Long idUser){
 
         clientRepository.deleteById(idUser);
-        return ResponseEntity.ok("Client deletado com sucesso");
+        return ResponseEntity.ok("Cliente deletado com sucesso");
     }
 }
