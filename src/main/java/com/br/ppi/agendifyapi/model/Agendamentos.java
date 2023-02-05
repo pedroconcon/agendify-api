@@ -1,5 +1,7 @@
 package com.br.ppi.agendifyapi.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,6 +9,9 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -19,19 +24,21 @@ public class Agendamentos{
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name="id_agendamento")
     private Long idAgendamento;
-    @Column(name="id_user")
-    @NotNull
-    private Long idUser;
+    @OneToOne
+    @JoinColumn(name = "id_user")
+    private Client client;
 
-    @Column(name="id_profissional")
-    @NotNull
-    private Long idProfissional;
+    @OneToOne
+    @JoinColumn(name = "id_profissional")
+    private Profissional profissional;
 
     @Column(name="valor")
     @NotNull
     private Double valor;
 
     @Column(name="data")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     @NotNull
     private LocalDateTime data;
+
 }

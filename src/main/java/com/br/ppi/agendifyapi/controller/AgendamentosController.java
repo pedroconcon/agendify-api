@@ -22,7 +22,7 @@ public class AgendamentosController {
     @GetMapping("/findAll-by-id")
     public ResponseEntity findAllById(@RequestParam Long idUser){
 
-        return ResponseEntity.ok(agendamentosRepository.findAllByIdUser(idUser));
+        return ResponseEntity.ok(agendamentosRepository.findAllByClientIdUser(idUser));
     }
 
     @PostMapping("/save")
@@ -32,10 +32,12 @@ public class AgendamentosController {
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity deleteAgendamento(@RequestParam Long idAgendamento){
+    public ResponseEntity deleteAgendamento(@RequestParam Long idAgendamento) {
 
         agendamentosRepository.deleteById(idAgendamento);
 
         return ResponseEntity.ok("Agendamento deletado com sucesso");
     }
+
+    
 }

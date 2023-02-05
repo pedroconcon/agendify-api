@@ -1,5 +1,6 @@
 package com.br.ppi.agendifyapi.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -32,8 +33,9 @@ public class Client {
     @NotNull
     private String senha;
     @Column(name="data_nascimento")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     @NotNull
-    private String dtNascimento;
+    private LocalDateTime dtNascimento;
     @Column(name="cpf")
     @NotNull
     private String cpf;
